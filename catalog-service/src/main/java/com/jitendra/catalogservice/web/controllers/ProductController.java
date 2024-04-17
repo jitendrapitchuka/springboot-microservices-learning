@@ -3,11 +3,10 @@ package com.jitendra.catalogservice.web.controllers;
 import com.jitendra.catalogservice.domain.PagedResult;
 import com.jitendra.catalogservice.domain.Product;
 
+import com.jitendra.catalogservice.domain.ProductNotFoundException;
 import com.jitendra.catalogservice.domain.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/products")
@@ -26,5 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
         return productService.getProducts(pageNo);
     }
 
+    @GetMapping("/{code}")
+    ResponseEntity<Product> getProductByCode(@PathVariable String code){
+         return productService.getProductsByCode(code)
+                 .map(ResponseEntity::ok)
+                 .orElseThrow(()-> ProductNotFoundException.forCode(code));
+    }
 
 }

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ProductService {
@@ -44,5 +46,8 @@ public class ProductService {
         );
     }
 
-
+        public Optional<Product> getProductsByCode(String code)
+        {
+            return productRepo.findByCode(code).map(ProductMapper::toProduct);
+        }
 }

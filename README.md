@@ -19,3 +19,6 @@ i.e provided package protection for ProductEntity by removing public
 6)Using of Record
 
 7)Using configurationProperties annotation
+
+8)Used testcontainers for testing and a test-data.sql script which will run before every test method
+eg:@Sql("/test-data.sql")
