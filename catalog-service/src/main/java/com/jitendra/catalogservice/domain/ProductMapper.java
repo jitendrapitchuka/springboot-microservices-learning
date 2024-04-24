@@ -1,6 +1,6 @@
 package com.jitendra.catalogservice.domain;
 
- class ProductMapper {
+class ProductMapper {
 
     static Product toProduct(ProductEntity productEntity) {
         return new Product(

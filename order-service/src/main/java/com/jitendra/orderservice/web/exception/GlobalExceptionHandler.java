@@ -1,6 +1,6 @@
-package com.jitendra.catalogservice.web.exception;
+package com.jitendra.orderservice.web.exception;
 
-import com.jitendra.catalogservice.domain.ProductNotFoundException;
+import com.jitendra.orderservice.domain.OrderNotFoundException;
 import java.net.URI;
 import java.time.Instant;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final URI NOT_FOUND_TYPE = URI.create("https://api.bookstore.com/errors/not-found");
     private static final URI ISE_FOUND_TYPE = URI.create("https://api.bookstore.com/errors/server-error");
-    private static final String SERVICE_NAME = "catalog-service";
+    private static final URI BAD_REQUEST_TYPE = URI.create("https://api.bookstore.com/errors/bad-request");
+    private static final String SERVICE_NAME = "order-service";
 
     @ExceptionHandler(Exception.class)
     ProblemDetail handleUnhandledException(Exception e) {
@@ -27,10 +28,10 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    ProblemDetail handleProductNotFoundException(ProductNotFoundException e) {
+    @ExceptionHandler(OrderNotFoundException.class)
+    ProblemDetail handleOrderNotFoundException(OrderNotFoundException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
-        problemDetail.setTitle("Product Not Found");
+        problemDetail.setTitle("Order Not Found");
         problemDetail.setType(NOT_FOUND_TYPE);
         problemDetail.setProperty("service", SERVICE_NAME);
         problemDetail.setProperty("error_category", "Generic");

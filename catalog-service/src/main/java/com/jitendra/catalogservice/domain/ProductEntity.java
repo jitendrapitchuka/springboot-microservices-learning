@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
- class ProductEntity {
+class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_generator")
@@ -28,8 +27,7 @@ import java.math.BigDecimal;
 
     private String imageUrl;
 
-    @NotNull(message = "Product price is required")
-    @DecimalMin("0.1")
+    @NotNull(message = "Product price is required") @DecimalMin("0.1")
     @Column(nullable = false)
     private BigDecimal price;
 

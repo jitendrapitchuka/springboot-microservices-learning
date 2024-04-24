@@ -1,19 +1,19 @@
 package com.jitendra.catalogservice.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
-@DataJpaTest( properties = {
-        "spring.test.database.replace=none",
-        "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
-})
+@DataJpaTest(
+        properties = {
+            "spring.test.database.replace=none",
+            "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
+        })
 @Sql("/test-data.sql")
 public class ProductRepositoryTest {
 
@@ -30,8 +30,8 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    void shouldGetProductByCode(){
-        ProductEntity product=productRepo.findByCode("P100").orElseThrow();
+    void shouldGetProductByCode() {
+        ProductEntity product = productRepo.findByCode("P100").orElseThrow();
         assertThat(product.getCode()).isEqualTo("P100");
         assertThat(product.getName()).isEqualTo("The Hunger Games");
         assertThat(product.getDescription()).isEqualTo("Winning will make you famous. Losing means certain death...");
