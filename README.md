@@ -24,3 +24,35 @@ i.e provided package protection for ProductEntity by removing public
 eg:@Sql("/test-data.sql")
 
 9)until i created the rabbitmq listeners and send controller rabbitmq connection establishment not happening.
+
+10)Embedding a Customer in OrderEntity
+
+In the `OrderEntity` class, we use the `@Embedded` annotation along with `@AttributeOverrides` to embed a `Customer` object within the entity. This allows us to store customer details directly within the `OrderEntity` table.
+
+### Syntax
+
+```java
+@Embedded
+@AttributeOverrides(
+    value = {
+        @AttributeOverride(name = "name", column = @Column(name = "customer_name")),
+        @AttributeOverride(name = "email", column = @Column(name = "customer_email")),
+        @AttributeOverride(name = "phone", column = @Column(name = "customer_phone"))
+    }
+)
+
+//Here Customer is  a record in another file.
+
+private Customer customer;
+
+public record Customer(
+        @NotBlank(message = "Customer Name is required") String name,
+        @NotBlank(message = "Customer email is required") @Email String email,
+        @NotBlank(message = "Customer Phone number is required") String phone) {}
+
+
+```
+
+11)Used Instancio
+
+12)@ParameterizedTest in tests
