@@ -22,3 +22,5 @@ i.e provided package protection for ProductEntity by removing public
 
 8)Used testcontainers for testing and a test-data.sql script which will run before every test method
 eg:@Sql("/test-data.sql")
+
+9)until i created the rabbitmq listeners and send controller rabbitmq connection establishment not happening.
