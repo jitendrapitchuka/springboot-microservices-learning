@@ -56,3 +56,10 @@ public record Customer(
 11)Used Instancio
 
 12)@ParameterizedTest in tests
+
+13)Used resilience4j
+* Retry
+* circuit breakers
+* But timeout from restclient only
+
+14)Using wiremock we are mocking the service calling (eg: calling  service A to Service B )
