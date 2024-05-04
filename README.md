@@ -63,3 +63,22 @@ public record Customer(
 * But timeout from restclient only
 
 14)Using wiremock we are mocking the service calling (eg: calling  service A to Service B )
+
+15)Pushing events to Rabbit Mq
+
+16)Using scheduled jobs and locking will come in picture when two or more instances of order service ran.
+
+
+### Syntax
+
+```java
+@Scheduled(cron = "${orders.new-orders-job-cron}")
+@SchedulerLock(name = "processNewOrders")
+public void publishOrderEvents() {
+        LockAssert.assertLocked();
+        log.info("Publishing Order Events at {}", Instant.now());
+        orderEventService.publishOrderEvents();
+        }
+```
+
+17)
