@@ -1,15 +1,13 @@
 package com.jitendra.orderservice.domain;
 
-import com.jitendra.orderservice.domain.models.CreateOrderRequest;
-import com.jitendra.orderservice.domain.models.CreateOrderResponse;
-import com.jitendra.orderservice.domain.models.OrderCreatedEvent;
-import com.jitendra.orderservice.domain.models.OrderStatus;
+import com.jitendra.orderservice.domain.models.*;
 import jakarta.transaction.Transactional;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,6 +35,15 @@ public class OrderService {
         return new CreateOrderResponse(savedOrder.getOrderNumber());
     }
 
+    public List<OrderSummary> findOrders(String userName) {
+        return orderRepository.findByUserName(userName);
+    }
+
+    public Optional<OrderDTO> findUserOrder(String userName, String orderNumber) {
+        return orderRepository
+                .findByUserNameAndOrderNumber(userName, orderNumber)
+                .map(OrderMapper::convertToDTO);
+    }
 
     public void processNewOrders() {
         List<OrderEntity> orders = orderRepository.findByStatus(OrderStatus.NEW);
