@@ -4,6 +4,7 @@ import com.jitendra.orderservice.AbstractIT;
 import com.jitendra.orderservice.domain.models.OrderSummary;
 import com.jitendra.orderservice.testData.TestDataFactory;
 import io.restassured.http.ContentType;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import io.restassured.common.mapper.TypeRef;
 import org.springframework.test.context.jdbc.Sql;
 
-@Sql({"/test-orders.sql"})
+
+@Sql("/test-orders.sql")
 class OrderControllerTests extends AbstractIT {
 
     @Nested
