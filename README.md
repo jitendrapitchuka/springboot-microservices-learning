@@ -165,4 +165,4 @@ boolean existsByEventId(String eventId);
    
 ### Architecture
 
-![Diagram](BookStore_Microservices_Architecture_Diagram.png)
+![Diagram](BookStore_Microservices_Architecture.png)
