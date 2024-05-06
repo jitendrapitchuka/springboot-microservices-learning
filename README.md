@@ -162,3 +162,7 @@ boolean existsByEventId(String eventId);
 
 3. **Access APIs with Swagger UI**:
     - After starting the microservices, you can access all the APIs using Swagger UI  ([http://localhost:8989](http://localhost:8989)).
+   
+### Architecture
+
+![Diagram](BookStore_Microservices_Architecture_Diagram)
