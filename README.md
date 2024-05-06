@@ -81,4 +81,44 @@ public void publishOrderEvents() {
         }
 ```
 
-17)
+17)Using MailHog docker image for test mail
+
+
+18) Not only findBy...(something) this existsBy.. also supports Jpa .
+### Syntax
+
+```java
+public interface OrderEventRepository extends JpaRepository<OrderEventEntity, Long> {
+boolean existsByEventId(String eventId);
+}
+```
+
+Api content :
+
+post - http://localhost:8082/api/orders
+```json
+{
+"customer" : {
+"name": "jitendra",
+"email": "jit@gmail.com",
+"phone": "999999999"
+},
+"deliveryAddress" : {
+"addressLine1": "test addressLine1",
+"addressLine2": "bank-Straße 23",
+"city": "rcpm",
+"state": "APradesh",
+"zipCode": "94258",
+"country": "invalid"
+},
+"items": [
+{
+"code": "P101",
+"name": "Product 2",
+"price": 45.40,
+"quantity": 1
+}
+]
+}
+ ``` 
+
