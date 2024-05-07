@@ -10,12 +10,14 @@
         <module name="order-service" />
         <module name="notification-service" />
         <module name="catalog-service" />
+        <module name="bookstore-webapp" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
+      <module name="bookstore-webapp" options="-parameters" />
       <module name="catalog-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="order-service" options="-parameters" />
