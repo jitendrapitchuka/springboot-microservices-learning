@@ -111,7 +111,16 @@ boolean existsByEventId(String eventId);
 }
 ```
 
+19. keycloak realm configuration imports from realm-config in deployment folder which helps us to store the users data even if the container is deleted.
+
+
+20. Added oauth2 authentication using keycloak docker container
+
+
+21. Added prometheus for observation metrics using docker.
+
 ## API Content
+
 
 ### POST - http://localhost:8082/api/orders
 

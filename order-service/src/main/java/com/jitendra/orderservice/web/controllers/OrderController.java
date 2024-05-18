@@ -7,6 +7,7 @@ import com.jitendra.orderservice.domain.models.CreateOrderRequest;
 import com.jitendra.orderservice.domain.models.CreateOrderResponse;
 import com.jitendra.orderservice.domain.models.OrderDTO;
 import com.jitendra.orderservice.domain.models.OrderSummary;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
+@SecurityRequirement(name = "security_auth")
 class OrderController {
     private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 

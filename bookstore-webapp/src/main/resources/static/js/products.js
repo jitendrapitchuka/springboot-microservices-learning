@@ -10,13 +10,13 @@ document.addEventListener('alpine:init', () => {
 
         },
         loadProducts(pageNo) {
-            $.getJSON("http://localhost:8989/catalog/api/products?page="+pageNo, (resp)=> {
+            $.getJSON("/api/products?page="+pageNo, (resp)=> {
                 console.log("Products Resp:", resp)
                 this.products = resp;
             });
         },
-//        addToCart(product) {
-//            addProductToCart(product)
-//        }
+        addToCart(product) {
+            addProductToCart(product)
+        }
     }))
 });
