@@ -119,6 +119,7 @@ boolean existsByEventId(String eventId);
 
 21. Added prometheus for observation metrics using docker.
 
+22. Loki helps us the push the all logs to given path in loki config.
 ## API Content
 
 
@@ -164,6 +165,19 @@ boolean existsByEventId(String eventId);
     - To restart the infrastructure, use:
       ```bash
       docker compose -f infra.yml restart
+      ```
+2. **Start the monitoring tools**:
+    - Start the monitoring.yml by running the following command:
+      ```bash
+      docker compose -f monitoring.yml up -d
+      ```
+    - To stop the monitoring tools, use:
+      ```bash
+      docker compose -f monitoring.yml stop
+      ```
+    - To restart the monitoring tools, use:
+      ```bash
+      docker compose -f monitoring.yml restart
       ```
 
 2. **Start Microservices**:
